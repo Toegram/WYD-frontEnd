@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/map.js'
+import LeafMap from './components/map.js'
 
 class App extends Component {
   render() {
@@ -8,7 +8,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1> WYD MAP MOD 4 PROJECT </h1>
-          <Map />
+          <LeafMap />
         </header>
       </div>
     );

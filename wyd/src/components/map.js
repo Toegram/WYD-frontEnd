@@ -1,31 +1,36 @@
 import React, { Component } from 'react'
+import { render } from 'react-dom'
+import { Map, Marker, Popup, TileLayer, LeafletMap  } from 'react-leaflet'
 
-class Map extends Component{
+// const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
+
+class LeafMap extends Component{
   constructor(props){
     super(props)
-
     this.state = {
-      dummyState: "dummy"
+      lat: 51.505,
+      lng: -0.09,
+      zoom: 13
     }
-
   }
 
   render(){
+    const position = [this.state.lat, this.state.lng];
     return(
-      <div>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-            integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-            crossorigin=""/>
 
-
-
-    )
-  }
-
-
+      <LeafletMap center={position} zoom={this.state.zoom}>
+        <TileLayer
+       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        />
+     <Marker position={position}>
+       <Popup>
+         A pretty CSS3 popup. <br/> Easily customizable.
+       </Popup>
+     </Marker>
+   </LeafletMap>
+  )
+}
 }
 
-
-
-
-export default Map
+export default LeafMap

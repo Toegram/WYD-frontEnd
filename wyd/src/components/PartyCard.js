@@ -16,16 +16,22 @@ class PartyCard extends React.Component {
 
   render() {
     return (
-      <Card
-        image='/images/avatar/large/elliot.jpg'
-        header='PARTY TIME'
-        meta='Friend'
-        description="Hello"
-      />
-
+      <Card>
+        Create A New Party!!
+        <br />
+      <input type='text' placeholder="Description" />
+      <br />
+      <button submit='submit' value='submit'  />
+      </Card>
     )
   }
 }
 
 
+// <Card
+//   image='/images/avatar/large/elliot.jpg'
+//   header='PARTY TIME'
+//   meta='Friend'
+//   description="Hello"
+//   />
 export default PartyCard

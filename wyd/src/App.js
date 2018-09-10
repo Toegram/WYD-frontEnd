@@ -31,7 +31,7 @@ class App extends Component {
           <div className='App-container'>
             <span className='wyd-div'>
             <h1>
-              WYD !?
+              By The Yard 
             </h1>
           </span>
             <span className='button-div'>

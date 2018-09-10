@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LeafMap from './components/map.js'
 import PartyContainer from './components/containers/PartyContainer'
+import TestButton from './components/buttons'
 
 const PartiesAPI = "http://localhost:3000/api/v1/parties"
 const UsersAPI = "http://localhost:3000/api/v1/users"
@@ -28,7 +29,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1> WYD MAP MOD 4 PROJECT </h1>
+          <div className='App-container'>
+            <span className='wyd-div'>
+            <h1>
+              WYD !?
+            </h1>
+          </span>
+            <span className='button-div'>
+            <TestButton />
+            </span>
+          </div>
         </header>
           <LeafMap />
       </div>

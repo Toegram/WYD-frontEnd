@@ -1,27 +1,50 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import PartyCard from './PartyCard'
 
-export default class SimpleExample extends Component {
- state = {
-   lat: 51.505,
-   lng: -0.09,
-   zoom: 13,
- }
+class SimpleExample extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+       markers: [],
+       clickerPos: [40.7589, -73.9851],
+       partySpots: []
+    }
+  }
+
+  handleClick = (event) => {
+    console.log(event.latlng)
+    this.setState({
+      ...this.state,
+      clickerPos: event.latlng
+    })
+
+  }
+
+
 
  render() {
-   const position = [this.state.lat, this.state.lng]
+   const startingPosition = [40.7589, -73.9851]
    return (
-     <Map className='leaflet-container' center={position} zoom={this.state.zoom}>
+     <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='12' >
        <TileLayer
          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
        />
-       <Marker position={position}>
+     <Marker position={this.state.clickerPos}>
          <Popup>
-           A pretty CSS3 popup. <br /> Easily customizable.
+            <PartyCard />
          </Popup>
+      </Marker>
+      <Marker position={startingPosition}>
+          <Popup>
+             <PartyCard />
+          </Popup>
        </Marker>
+
      </Map>
    )
  }
 }
+
+export default SimpleExample

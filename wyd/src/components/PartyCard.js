@@ -20,7 +20,7 @@ class PartyCard extends React.Component {
         image='/images/avatar/large/elliot.jpg'
         header='PARTY TIME'
         meta='Friend'
-        description={this.props.party.address}
+        description="Hello"
       />
 
     )

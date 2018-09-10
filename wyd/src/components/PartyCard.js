@@ -16,12 +16,16 @@ class PartyCard extends React.Component {
 
   render() {
     return (
-      <div className = "ui five wide column">
-        Hello!
-        {this.props.party.address}
-      </div>
+      <Card
+        image='/images/avatar/large/elliot.jpg'
+        header='PARTY TIME'
+        meta='Friend'
+        description={this.props.party.address}
+      />
+
     )
   }
 }
+
 
 export default PartyCard

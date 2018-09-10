@@ -30,7 +30,7 @@ class App extends Component {
         <header className="App-header">
           <h1> WYD MAP MOD 4 PROJECT </h1>
         </header>
-          <PartyContainer parties = {this.state.parties}/>
+          <LeafMap />
       </div>
 
     );

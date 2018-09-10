@@ -24,7 +24,7 @@ class SimpleExample extends Component {
 
 
  render() {
-   const startingPosition = [40.7589, -73.9851]
+   const startingPosition = "40.7589, -73.9851"
    return (
      <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='12' >
        <TileLayer
@@ -36,11 +36,15 @@ class SimpleExample extends Component {
             <PartyCard />
          </Popup>
       </Marker>
-      <Marker position={startingPosition}>
+
+      {this.props.partySpots.map( spot => {
+      return (
+        <Marker position={spot.latlng}>
           <Popup>
-             <PartyCard />
+            <PartyCard />
           </Popup>
-       </Marker>
+        </Marker>
+      ) } )}
 
      </Map>
    )

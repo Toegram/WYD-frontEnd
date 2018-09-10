@@ -3,10 +3,10 @@ import React from 'react'
 const TestButton = () => {
   return(
     <div className='button-stuff' >
-    <button class="ui button">
+    <button className="ui button">
       Sign Up
     </button>
-      <div class="ui button" tabindex="0">
+      <div className="ui button" tabIndex="0">
         Log In
       </div>
     </div>

@@ -8,7 +8,6 @@ class SimpleExample extends Component {
     this.state = {
        markers: [],
        clickerPos: [40.7589, -73.9851],
-       partySpots: []
     }
   }
 
@@ -21,10 +20,29 @@ class SimpleExample extends Component {
 
   }
 
+  stringToFloat = (party) => {
+    let finalArray = []
+    party.map( tude => {
+      finalArray.push(parseFloat(tude))
+    })
+    return finalArray
+  }
 
+  mappedMarkers = () => {
+    return this.props.partySpot.map(spot => {
+      return(
+        <Marker key = {spot.id} position={this.stringToFloat(spot.latlng.split(','))}>
+          <Popup>
+            {spot.address}
+          </Popup>
+        </Marker>
+      )
+    })
+  }
 
  render() {
-   const startingPosition = "40.7589, -73.9851"
+   console.log(this.mappedMarkers())
+   const startingPosition = [40.7589, -73.9851]
    return (
      <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='12' >
        <TileLayer
@@ -36,16 +54,7 @@ class SimpleExample extends Component {
             <PartyCard />
          </Popup>
       </Marker>
-
-      {this.props.partySpots.map( spot => {
-      return (
-        <Marker position={spot.latlng}>
-          <Popup>
-            <PartyCard />
-          </Popup>
-        </Marker>
-      ) } )}
-
+      {this.mappedMarkers()}
      </Map>
    )
  }

@@ -1,5 +1,4 @@
 import React from "react"
-import { Dropdown, Button, Label } from "semantic-ui-react"
 import PartyCard from "../PartyCard"
 
 const PartyContainer = (props) => {

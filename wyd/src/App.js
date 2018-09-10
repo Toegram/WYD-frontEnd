@@ -13,9 +13,7 @@ class App extends Component {
     super(props)
     this.state = {
       parties: [],
-      partiesToDisplay: [],
-      users: [],
-      filterInput: ""
+      users: []
     }
   }
 
@@ -26,6 +24,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log("STATE OF THE PARTY UNION:", this.state.parties.latlng);
     return (
       <div className="App">
         <header className="App-header">
@@ -40,7 +39,7 @@ class App extends Component {
             </span>
           </div>
         </header>
-          <LeafMap />
+          <LeafMap partySpot={this.state.parties} />
       </div>
 
     );

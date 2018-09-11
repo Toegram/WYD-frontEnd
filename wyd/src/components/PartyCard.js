@@ -9,6 +9,21 @@ class PartyCard extends React.Component {
     }
   }
 
+  submitHandler = (event) => {
+    event.preventDefault()
+    const lat = this.props.latlng.lat.toString()
+    const lng = this.props.latlng.lng.toString()
+    const latlng = lat + ", " + lng
+    const dataObj = {
+      address: document.getElementById("address").value,
+      host_id: document.getElementById("host-id").value,
+      description: document.getElementById("description").value,
+      address: document.getElementById("address").value,
+      latlng: latlng
+    }
+    this.props.handlePost(dataObj)
+  }
+
   handleClick = e => {
     e.preventDefault();
     this.setState({ isClicked: !this.state.isClicked });
@@ -19,17 +34,15 @@ class PartyCard extends React.Component {
       <Card>
         Create A New Party!!
         <br />
-        <form onSubmit={this.props.handlePost}>
-          <input type='text' placeholder="Address" />
-          <input type='text' placeholder="Description" />
-          <input type='number' placeholder="Host Id" />
+        <form onSubmit={this.submitHandler} latlng={this.props.latlng}>
+          <input id="address" type='text' placeholder="Address" />
+          <input id="description" type='text' placeholder="Description" />
+          <input id="host-id" type='number' placeholder="Host Id" />
           <br />
-          <button class="ui button" >
+          <button className="ui button" >
             CREATE AN EVENT!
           </button>
         </form>
-
-
       </Card>
     )
   }

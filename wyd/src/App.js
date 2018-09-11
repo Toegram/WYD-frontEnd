@@ -24,21 +24,17 @@ class App extends Component {
 
 
 
-  handlePost = (event) => {
-    event.preventDefault()
-    debugger
-    event.target.forEach(a => console.log(a.value))
+  handlePost = (data) => {
     let objData = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ })
+      body: JSON.stringify({party: data})
     }
-
     fetch(PartiesAPI, objData).then( res => console.log(res) )
+    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({ parties: data }))
   }
-
 
 
   render() {

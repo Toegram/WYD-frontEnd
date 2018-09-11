@@ -18,11 +18,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({ parties: data }))
-    fetch(UsersAPI).then(res => res.json()).then(data => this.setState({ users: data }))
+    this.fetchData()
   }
 
-
+  fetchData() {
+    console.log("fetching data")
+    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({parties: data }))
+    fetch(UsersAPI).then(res => res.json()).then(data => this.setState({ users: data }))
+  }
 
   handlePost = (data) => {
     let objData = {
@@ -32,14 +35,11 @@ class App extends Component {
       },
       body: JSON.stringify({party: data})
     }
-    fetch(PartiesAPI, objData)
-    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({ parties: data }))
-    console.log(this.state)
+    fetch(PartiesAPI, objData).then(console.log("finished posting")).then(this.fetchData()).then(console.log(this.state))
   }
 
 
   render() {
-    // console.log("STATE OF THE PARTY UNION:", this.state.parties.latlng);
     return (
       <div className="App">
         <header className="App-header">

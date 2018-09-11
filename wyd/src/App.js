@@ -32,8 +32,9 @@ class App extends Component {
       },
       body: JSON.stringify({party: data})
     }
-    fetch(PartiesAPI, objData).then( res => console.log(res) )
+    fetch(PartiesAPI, objData)
     fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({ parties: data }))
+    console.log(this.state)
   }
 
 

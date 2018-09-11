@@ -41,7 +41,6 @@ class SimpleExample extends Component {
   }
 
  render() {
-   console.log(this.mappedMarkers())
    const startingPosition = [40.7589, -73.9851]
    return (
      <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='12' >

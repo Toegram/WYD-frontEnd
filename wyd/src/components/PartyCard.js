@@ -19,9 +19,17 @@ class PartyCard extends React.Component {
       <Card>
         Create A New Party!!
         <br />
-      <input type='text' placeholder="Description" />
-      <br />
-      <button submit='submit' value='submit'  />
+        <form onSubmit={this.props.handlePost}>
+          <input type='text' placeholder="Address" />
+          <input type='text' placeholder="Description" />
+          <input type='number' placeholder="Host Id" />
+          <br />
+          <button class="ui button" >
+            CREATE AN EVENT!
+          </button>
+        </form>
+
+
       </Card>
     )
   }

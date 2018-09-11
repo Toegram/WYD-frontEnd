@@ -51,7 +51,7 @@ class SimpleExample extends Component {
        />
      <Marker position={this.state.clickerPos}>
          <Popup>
-            <PartyCard />
+            <PartyCard handlePost={this.props.handlePost} />
          </Popup>
       </Marker>
       {this.mappedMarkers()}

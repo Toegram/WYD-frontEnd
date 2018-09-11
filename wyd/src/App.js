@@ -20,8 +20,26 @@ class App extends Component {
   componentDidMount() {
     fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({ parties: data }))
     fetch(UsersAPI).then(res => res.json()).then(data => this.setState({ users: data }))
-
   }
+
+
+
+  handlePost = (event) => {
+    event.preventDefault()
+    debugger
+    event.target.forEach(a => console.log(a.value))
+    let objData = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ })
+    }
+
+    fetch(PartiesAPI, objData).then( res => console.log(res) )
+  }
+
+
 
   render() {
     // console.log("STATE OF THE PARTY UNION:", this.state.parties.latlng);
@@ -31,7 +49,7 @@ class App extends Component {
           <div className='App-container'>
             <span className='wyd-div'>
             <h1>
-              By The Yard 
+              By The Yard
             </h1>
           </span>
             <span className='button-div'>
@@ -39,7 +57,7 @@ class App extends Component {
             </span>
           </div>
         </header>
-          <LeafMap partySpot={this.state.parties} />
+          <LeafMap handlePost={this.handlePost} partySpot={this.state.parties} />
       </div>
 
     );
@@ -47,11 +65,3 @@ class App extends Component {
 }
 
 export default App;
-
-//Google Maps API w/ key
-
-// <p className="google-map">
-//   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWzKqnlu-46fmjbMf2bo8iC-iQ87yEz2w&callback=initMap"
-//    type="text/javascript"></script>
-//
-// </p>

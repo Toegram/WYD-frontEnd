@@ -13,7 +13,8 @@ class App extends Component {
     super(props)
     this.state = {
       parties: [],
-      users: []
+      user_parties: [],
+      filter: false
     }
   }
 
@@ -22,17 +23,12 @@ class App extends Component {
   }
 
   fetchData() {
-    fetch(PartiesAPI)
-    .then(res => res.json())
-    .then(data => this.setState({parties: data }))
-
-    fetch(UsersAPI)
-    .then(res => res.json())
-    .then(data => this.setState({ users: data }))
+    console.log("fetching data")
+    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({parties: data }))
+    fetch(UsersAPI).then(res => res.json()).then(data => this.setState({ users: data }))
   }
 
   handlePost = (data) => {
-
     let objData = {
       method: 'POST',
       headers: {
@@ -40,11 +36,24 @@ class App extends Component {
       },
       body: JSON.stringify({party: data})
     }
-
-    fetch(PartiesAPI, objData)
-    .then(() => this.fetchData())
+    fetch(PartiesAPI, objData).then(console.log("finished posting")).then(this.fetchData()).then(console.log(this.state))
   }
 
+  handleCheckIn = (party) => {
+    this.setState({
+      ...this.state,
+      user_parties: [...this.state.user_parties, party]
+    })
+    alert(`You've checked in to ${party.host.user_name}'s party!'`)
+  }
+
+  filterTrue = () => {
+    this.setState({filter: true})
+  }
+
+  filterFalse = () => {
+    this.setState({filter: false})
+  }
 
   render() {
     return (
@@ -53,15 +62,15 @@ class App extends Component {
           <div className='App-container'>
             <span className='wyd-div'>
             <h1>
-              WYD!?
+              WYD
             </h1>
           </span>
             <span className='button-div'>
-            <TestButton />
+            <TestButton filterTrue={this.filterTrue} filterFalse={this.filterFalse}/>
             </span>
           </div>
         </header>
-          <LeafMap handlePost={this.handlePost} partySpot={this.state.parties} />
+          <LeafMap handleCheckIn={this.handleCheckIn} handlePost={this.handlePost} partySpot={this.state.parties} filter={this.state.filter} userParties={this.state.user_parties}/>
       </div>
 
     );

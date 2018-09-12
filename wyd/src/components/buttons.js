@@ -1,14 +1,14 @@
 import React from 'react'
 
-const TestButton = () => {
+const TestButton = (props) => {
   return(
     <div className='button-stuff' >
-    <button className="ui button">
-      Sign Up
+    <button onClick={props.filterTrue} className="ui button">
+      My Parties
     </button>
-      <div className="ui button" tabIndex="0">
-        Log In
-      </div>
+    <button onClick={props.filterFalse} className="ui button">
+      All Parties
+    </button>
     </div>
   )
 

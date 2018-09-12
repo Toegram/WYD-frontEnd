@@ -29,18 +29,35 @@ class SimpleExample extends Component {
   }
 
   mappedMarkers = () => {
-    return this.props.partySpot.map(spot => {
-      return(
-        <Marker key = {spot.id} position={this.stringToFloat(spot.latlng.split(','))}>
-          <Popup>
-          <b> Address: </b> {spot.address} <br />
-          <b> Description: </b> {spot.description}
-
-          </Popup>
-        </Marker>
-      )
-    })
-  }
+    if (this.props.filter) {
+      return this.props.userParties.map(spot => {
+        return(
+          <Marker key = {spot.id} position={this.stringToFloat(spot.latlng.split(','))}>
+            <Popup>
+              Address: {spot.address} <br />
+              Description: {spot.description} <br />
+              Host: {spot.host.user_name} <br />
+            </Popup>
+          </Marker>
+        )
+      })
+    } else if(this.props.filter === false) {
+     return this.props.partySpot.map(spot => {
+       return(
+         <Marker key = {spot.id} position={this.stringToFloat(spot.latlng.split(','))}>
+           <Popup>
+             Address: {spot.address} <br />
+             Description: {spot.description} <br />
+             Host: {spot.host.user_name} <br />
+             <button onClick={() => this.props.handleCheckIn(spot)} className="ui button">
+               Check In
+             </button>
+           </Popup>
+         </Marker>
+       )
+     })
+   }
+ }
 
  render() {
    const startingPosition = [40.7589, -73.9851]

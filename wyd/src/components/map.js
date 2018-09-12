@@ -33,7 +33,9 @@ class SimpleExample extends Component {
       return(
         <Marker key = {spot.id} position={this.stringToFloat(spot.latlng.split(','))}>
           <Popup>
-            {spot.address}
+          <b> Address: </b> {spot.address} <br />
+          <b> Description: </b> {spot.description}
+
           </Popup>
         </Marker>
       )

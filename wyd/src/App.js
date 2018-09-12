@@ -22,12 +22,17 @@ class App extends Component {
   }
 
   fetchData() {
-    console.log("fetching data")
-    fetch(PartiesAPI).then(res => res.json()).then(data => this.setState({parties: data }))
-    fetch(UsersAPI).then(res => res.json()).then(data => this.setState({ users: data }))
+    fetch(PartiesAPI)
+    .then(res => res.json())
+    .then(data => this.setState({parties: data }))
+
+    fetch(UsersAPI)
+    .then(res => res.json())
+    .then(data => this.setState({ users: data }))
   }
 
   handlePost = (data) => {
+
     let objData = {
       method: 'POST',
       headers: {
@@ -35,7 +40,9 @@ class App extends Component {
       },
       body: JSON.stringify({party: data})
     }
-    fetch(PartiesAPI, objData).then(console.log("finished posting")).then(this.fetchData()).then(console.log(this.state))
+
+    fetch(PartiesAPI, objData)
+    .then(() => this.fetchData())
   }
 
 
@@ -46,7 +53,7 @@ class App extends Component {
           <div className='App-container'>
             <span className='wyd-div'>
             <h1>
-              By The Yard
+              WYD!?
             </h1>
           </span>
             <span className='button-div'>

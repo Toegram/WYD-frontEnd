@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import LeafMap from './components/map.js'
-import PartyContainer from './components/containers/PartyContainer'
-import TestButton from './components/buttons'
+import YardContainer from './components/containers/YardContainer'
+import SemanticButton from './components/buttons'
 
 const PartiesAPI = "http://localhost:3000/api/v1/parties"
 const UsersAPI = "http://localhost:3000/api/v1/users"
@@ -62,11 +62,11 @@ class App extends Component {
           <div className='App-container'>
             <span className='wyd-div'>
             <h1>
-              WYD
+              By The Yard . . .
             </h1>
           </span>
             <span className='button-div'>
-            <TestButton filterTrue={this.filterTrue} filterFalse={this.filterFalse}/>
+            <SemanticButton filterTrue={this.filterTrue} filterFalse={this.filterFalse}/>
             </span>
           </div>
         </header>

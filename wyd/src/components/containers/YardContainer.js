@@ -1,11 +1,14 @@
 import React from "react"
-import PartyCard from "../PartyCard"
+import YardCard from "../YardCard"
 
-const PartyContainer = (props) => {
+//Yard Sale Container will show all Yard Sales
+
+const YardContainer = (props) => {
 
   let counter = 0
+
   const mappedParties = props.parties.map(party => {
-    return <PartyCard party={party} key={++counter}/>
+    return <YardCard party={party} key={++counter}/>
   })
 
   console.log("mappedParties are", mappedParties)
@@ -15,4 +18,4 @@ const PartyContainer = (props) => {
   )
 }
 
-export default PartyContainer
+export default YardContainer

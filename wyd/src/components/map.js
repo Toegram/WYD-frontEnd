@@ -1,23 +1,19 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import PartyCard from './PartyCard'
+import YardCard from './YardCard'
 
-class SimpleExample extends Component {
+class LeafletMap extends Component {
   constructor(props){
     super(props)
     this.state = {
        markers: [],
-       clickerPos: [40.7589, -73.9851],
+       clickerPos: [40.73344658954001, -73.59081423681278],
     }
   }
 
   handleClick = (event) => {
     console.log(event.latlng)
-    this.setState({
-      ...this.state,
-      clickerPos: event.latlng
-    })
-
+    this.setState({ clickerPos: event.latlng })
   }
 
   stringToFloat = (party) => {
@@ -69,7 +65,7 @@ class SimpleExample extends Component {
        />
      <Marker position={this.state.clickerPos}>
          <Popup>
-            <PartyCard handlePost={this.props.handlePost} latlng={this.state.clickerPos}/>
+            <YardCard handlePost={this.props.handlePost} latlng={this.state.clickerPos}/>
          </Popup>
       </Marker>
       {this.mappedMarkers()}
@@ -78,4 +74,4 @@ class SimpleExample extends Component {
  }
 }
 
-export default SimpleExample
+export default LeafletMap

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react';
 
-class PartyCard extends React.Component {
+class YardCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,10 +10,13 @@ class PartyCard extends React.Component {
   }
 
   submitHandler = (event) => {
+
     event.preventDefault()
+
     const lat = this.props.latlng.lat.toString()
     const lng = this.props.latlng.lng.toString()
     const latlng = lat + ", " + lng
+
     const dataObj = {
       address: document.getElementById("address").value,
       host_id: document.getElementById("host-id").value,
@@ -21,6 +24,7 @@ class PartyCard extends React.Component {
       address: document.getElementById("address").value,
       latlng: latlng
     }
+    
     this.props.handlePost(dataObj)
   }
 
@@ -32,7 +36,7 @@ class PartyCard extends React.Component {
   render() {
     return (
       <Card>
-        Create A New Party!!
+        Create a Yard Sale Post!!
         <br />
         <form onSubmit={this.submitHandler} latlng={this.props.latlng}>
           <input id="address" type='text' placeholder="Address" />
@@ -55,4 +59,4 @@ class PartyCard extends React.Component {
 //   meta='Friend'
 //   description="Hello"
 //   />
-export default PartyCard
+export default YardCard

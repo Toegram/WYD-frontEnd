@@ -40,10 +40,7 @@ class App extends Component {
   }
 
   handleCheckIn = (party) => {
-    this.setState({
-      ...this.state,
-      user_parties: [...this.state.user_parties, party]
-    })
+    this.setState({ user_parties: [...this.state.user_parties, party] })
     alert(`You've checked in to ${party.host.user_name}'s party!'`)
   }
 

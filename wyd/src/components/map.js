@@ -56,14 +56,14 @@ class LeafletMap extends Component {
  }
 
  render() {
-   const startingPosition = [40.7589, -73.9851]
+   const startingPosition = [40.79169888584593, -73.18116545677186]
    return (
-     <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='12' >
+     <Map onClick={this.handleClick} className='leaflet-container' center={startingPosition} zoom='10' >
        <TileLayer
          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
        />
-     <Marker position={this.state.clickerPos}>
+       <Marker position={this.state.clickerPos}>
          <Popup>
             <YardCard handlePost={this.props.handlePost} latlng={this.state.clickerPos}/>
          </Popup>
